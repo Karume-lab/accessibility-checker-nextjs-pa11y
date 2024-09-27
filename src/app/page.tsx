@@ -125,45 +125,53 @@ export default function Home() {
               {activeTab === 'axe' && (
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold mb-4">Axe Issues</h3>
-                  {axeIssues.map((issue, index) => (
-                    <div key={index} className="bg-gray-700 p-6 rounded-lg shadow-md">
-                      <h4 className="text-xl font-semibold mb-2">{issue.message}</h4>
-                      <div className="grid grid-cols-2 gap-4 text-sm">
-                        <p><span className="font-semibold">Code:</span> {issue.code}</p>
-                        <p><span className="font-semibold">Type:</span> {issue.type}</p>
-                        <p className="col-span-2"><span className="font-semibold">Context:</span> {issue.context}</p>
-                        <p className="col-span-2"><span className="font-semibold">Selector:</span> {issue.selector}</p>
-                      </div>
-                      {issue.runnerExtras && Object.keys(issue.runnerExtras).length > 0 && (
-                        <div className="mt-4 bg-gray-800 p-4 rounded-lg">
-                          <h5 className="font-semibold mb-2">Runner Extras:</h5>
-                          <p><span className="font-semibold">Description:</span> {issue.runnerExtras.description}</p>
-                          <p><span className="font-semibold">Impact:</span> {issue.runnerExtras.impact}</p>
-                          <p><span className="font-semibold">Help:</span> {issue.runnerExtras.help}</p>
-                          <a href={issue.runnerExtras.helpUrl} className="text-blue-300 hover:underline mt-2 inline-block" target="_blank" rel="noopener noreferrer">
-                            Learn more →
-                          </a>
+                  {axeIssues.length > 0 ? (
+                    axeIssues.map((issue, index) => (
+                      <div key={index} className="bg-gray-700 p-6 rounded-lg shadow-md">
+                        <h4 className="text-xl font-semibold mb-2">{issue.message}</h4>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <p><span className="font-semibold">Code:</span> {issue.code}</p>
+                          <p><span className="font-semibold">Type:</span> {issue.type}</p>
+                          <p className="col-span-2"><span className="font-semibold">Context:</span> {issue.context}</p>
+                          <p className="col-span-2"><span className="font-semibold">Selector:</span> {issue.selector}</p>
                         </div>
-                      )}
-                    </div>
-                  ))}
+                        {issue.runnerExtras && Object.keys(issue.runnerExtras).length > 0 && (
+                          <div className="mt-4 bg-gray-800 p-4 rounded-lg">
+                            <h5 className="font-semibold mb-2">Runner Extras:</h5>
+                            <p><span className="font-semibold">Description:</span> {issue.runnerExtras.description}</p>
+                            <p><span className="font-semibold">Impact:</span> {issue.runnerExtras.impact}</p>
+                            <p><span className="font-semibold">Help:</span> {issue.runnerExtras.help}</p>
+                            <a href={issue.runnerExtras.helpUrl} className="text-blue-300 hover:underline mt-2 inline-block" target="_blank" rel="noopener noreferrer">
+                              Learn more →
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-gray-400">No issues found in Axe results.</p>
+                  )}
                 </div>
               )}
 
               {activeTab === 'html' && (
                 <div className="space-y-6">
                   <h3 className="text-2xl font-bold mb-4">HTML/CSS Issues</h3>
-                  {htmlcsIssues.map((issue, index) => (
-                    <div key={index} className="bg-gray-700 p-6 rounded-lg shadow-md">
-                      <h4 className="text-xl font-semibold mb-2">{issue.message}</h4>
-                      <div className="grid grid-cols-2 gap-4 text-sm">
-                        <p><span className="font-semibold">Code:</span> {issue.code}</p>
-                        <p><span className="font-semibold">Type:</span> {issue.type}</p>
-                        <p className="col-span-2"><span className="font-semibold">Context:</span> {issue.context}</p>
-                        <p className="col-span-2"><span className="font-semibold">Selector:</span> {issue.selector}</p>
+                  {htmlcsIssues.length > 0 ? (
+                    htmlcsIssues.map((issue, index) => (
+                      <div key={index} className="bg-gray-700 p-6 rounded-lg shadow-md">
+                        <h4 className="text-xl font-semibold mb-2">{issue.message}</h4>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <p><span className="font-semibold">Code:</span> {issue.code}</p>
+                          <p><span className="font-semibold">Type:</span> {issue.type}</p>
+                          <p className="col-span-2"><span className="font-semibold">Context:</span> {issue.context}</p>
+                          <p className="col-span-2"><span className="font-semibold">Selector:</span> {issue.selector}</p>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))
+                  ) : (
+                    <p className="text-gray-400">No issues found in HTML/CSS results.</p>
+                  )}
                 </div>
               )}
             </div>
